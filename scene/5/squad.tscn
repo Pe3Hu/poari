@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://clsyuahis2mwn"]
+
+[sub_resource type="GDScript" id="GDScript_uu20q"]
+script/source = "extends MarginContainer
+
+
+#region vars
+@onready var pawns = $Pawns
+
+var god = null
+var isle = null
+var team = null
+#endregion
+
+
+#region init
+func set_attributes(input_: Dictionary) -> void:
+	god = input_.god
+	
+	init_basic_setting(input_)
+
+
+func init_basic_setting(input_: Dictionary) -> void:
+	init_pawns(input_)
+
+
+func init_pawns(input_: Dictionary) -> void:
+	for pawn in input_.pawns:
+		pawns.add_child(pawn)
+		pawn.squad = self
+		pawn.order = input_.pawns.find(pawn)
+#endregion
+
+
+func move_random_marker() -> void:
+	var pawn = pawns.get_children().pick_random()
+	var steps = isle.mileage.pool.result
+	pawn.marker.start_moving(steps)
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7paps"]
+
+[node name="Squad" type="MarginContainer"]
+custom_minimum_size = Vector2(5, 5)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = SubResource("GDScript_uu20q")
+
+[node name="BG" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7paps")
+
+[node name="Pawns" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1

@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4d51vyktnget"]
+
+[ext_resource type="PackedScene" uid="uid://cijfgbdi8yqwa" path="res://scene/5/token.tscn" id="1_k8w7v"]
+[ext_resource type="Script" path="res://scene/5/marker.gd" id="2_w18xc"]
+
+[node name="Marker" instance=ExtResource("1_k8w7v")]
+script = ExtResource("2_w18xc")
