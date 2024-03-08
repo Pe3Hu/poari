@@ -47,6 +47,7 @@ func init_basic_setting() -> void:
 	if grid.y != 0:
 		vbox.move_child(directions, 0)
 		karma = Global.arr.karma.front()
+		#directions.set("size_flags_vertical", SIZE_SHRINK_BEGIN)
 	else:
 		karma = Global.arr.karma.back()
 
@@ -146,6 +147,11 @@ func add_marker(marker_: MarginContainer) -> void:
 		markers.add_child(marker_)
 		marker_.location = self
 		update_size(1)
+		
+		var team = marker_.proprietor.squad.team
+		
+		if isle.exits[team] == self:
+			marker_.finish()
 
 
 func update_size(shift_: int) -> void:
@@ -159,5 +165,7 @@ func update_size(shift_: int) -> void:
 			flag = n % Global.num.location.markers == 1
 	
 	if flag:
-		dimensions = Vector2(3, n / Global.num.location.markers) * Global.vec.size.token
+		var x = 3
+		var y = ceil(float(n) / Global.num.location.markers)
+		dimensions = Vector2(x, y) * Global.vec.size.token
 		isle.update_karmas(karma)

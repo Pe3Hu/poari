@@ -49,4 +49,5 @@ func add_marker(location_: MarginContainer) -> void:
 	marker.set_attributes(input)
 	remove_child(marker)
 	location_.add_marker(marker)
+	squad.markers.append(marker)
 #endregion

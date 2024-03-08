@@ -32,5 +32,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_7paps")
 
 [node name="Dices" type="HBoxContainer" parent="."]
 layout_mode = 2
+theme_override_constants/separation = 0
 alignment = 1
 script = SubResource("GDScript_0l4gr")

@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://c12vid0pjew4v"]
+
+[ext_resource type="Script" path="res://scene/2/planet.gd" id="1_ictb4"]
+[ext_resource type="PackedScene" uid="uid://dvdcoeutm1eo6" path="res://scene/4/moon.tscn" id="2_2eagd"]
+[ext_resource type="PackedScene" uid="uid://cesqk6ekpivko" path="res://scene/2/isle.tscn" id="2_g7ogv"]
+[ext_resource type="PackedScene" uid="uid://cetpku1674nsq" path="res://scene/4/mileage.tscn" id="3_1cl2b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7paps"]
+
+[node name="Planet" type="MarginContainer"]
+custom_minimum_size = Vector2(5, 5)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_ictb4")
+
+[node name="BG" type="Panel" parent="."]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7paps")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.15
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Moon" parent="VBox" instance=ExtResource("2_2eagd")]
+layout_mode = 2
+
+[node name="HBox" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Squads" type="VBoxContainer" parent="VBox/HBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Isle" parent="VBox/HBox" instance=ExtResource("2_g7ogv")]
+layout_mode = 2
+
+[node name="Mileage" parent="VBox" instance=ExtResource("3_1cl2b")]
+layout_mode = 2

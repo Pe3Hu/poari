@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2l8ccitodg5p"]
+
+[ext_resource type="Script" path="res://scene/5/precept.gd" id="1_r42fi"]
+[ext_resource type="PackedScene" uid="uid://cijfgbdi8yqwa" path="res://scene/5/token.tscn" id="1_rysg6"]
+
+[node name="Precept" instance=ExtResource("1_rysg6")]
+script = ExtResource("1_r42fi")

@@ -4,13 +4,13 @@ extends MarginContainer
 #region vars
 @onready var pool = $Pool
 
-var isle = null
+var planet = null
 #endregion
 
 
 #region vars
 func set_attributes(input_: Dictionary) -> void:
-	isle = input_.isle
+	planet = input_.planet
 	
 	custom_minimum_size = Global.vec.size.mileage
 

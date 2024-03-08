@@ -24,5 +24,4 @@ func init_isles() -> void:
 		var isle = Global.scene.isle.instantiate()
 		isles.add_child(isle)
 		isle.set_attributes(input)
-
 #endregion

@@ -17,4 +17,4 @@ func _input(event) -> void:
 		match event.keycode:
 			KEY_SPACE:
 				if event.is_pressed() && !event.is_echo():
-					pass
+					sketch.universe.planets.get_child(0).moon.follow_phase()

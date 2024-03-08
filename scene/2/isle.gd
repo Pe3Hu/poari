@@ -2,30 +2,21 @@ extends MarginContainer
 
 
 #region vars
-@onready var locations = $VBox/HBox/Locations
-@onready var aisles = $VBox/HBox/Aisles
-@onready var undersides = $VBox/HBox/Undersides
-@onready var travelers = $VBox/HBox/Travelers
-@onready var squads = $VBox/HBox/Squads
-@onready var mileage = $VBox/Mileage
-@onready var regions = $VBox/HBox/Regions
-@onready var towers = $VBox/HBox/Towers
-@onready var timer = $Timer
+@onready var locations = $HBox/Locations
+@onready var aisles = $HBox/Aisles
+@onready var regions = $HBox/Regions
 
-var continent = null
+var planet = null
 var dimensions = null
-var iteration = 0
-var active = true
 var exits = {}
 var entries = {}
 var karmas = {}
-var host = null
 #endregion
 
 
 #region init
 func set_attributes(input_: Dictionary) -> void:
-	continent = input_.continent
+	planet = input_.planet
 	dimensions = input_.dimensions
 	
 	init_basic_setting()
@@ -35,11 +26,7 @@ func init_basic_setting() -> void:
 	init_locations()
 	init_aisles()
 	init_regions()
-	Engine.time_scale = 3
 	
-	var input = {}
-	input.isle = self
-	#vastness.set_attributes(input)
 	
 	for karma in Global.arr.karma:
 		karmas[karma] = Vector2()
@@ -161,6 +148,7 @@ func get_location(grid_: Vector2) -> Variant:
 		return locations.get_child(index)
 	
 	return null
+#endregion
 
 
 func update_karmas(karma_: String) -> void:
@@ -170,40 +158,17 @@ func update_karmas(karma_: String) -> void:
 		if karma_ == location.karma and location.dimensions > _dimensions:
 			_dimensions = location.dimensions
 	
+	
 	for location in locations.get_children():
 		if karma_ == location.karma:
 			location.markers.custom_minimum_size = _dimensions
-#endregion
-
-
-
-func add_squad(squad_: MarginContainer) -> void:
-	squad_.team = "white"
-	
-	if squads.get_child_count():
-		squad_.team = "black"
-	
-	squad_.isle = self
-	squads.add_child(squad_)
-
-
-func start_race() -> void:
-	place_markers()
-	var squad = squads.get_child(0)
-	set_host(squad)
 
 
 func place_markers() -> void:
-	for squad in squads.get_children():
+	for squad in planet.squads.get_children():
 		#var team = Global.dict.mirror.team[squad.team]
 		var location = entries[squad.team]
 		
 		for pawn in squad.pawns.get_children():
 			pawn.add_marker(location)
 
-
-func set_host(squad_: MarginContainer) -> void:
-	host = squad_
-	mileage.roll_pool()
-	squad_.move_random_marker()
-	#mileage.reset()

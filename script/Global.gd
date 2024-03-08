@@ -27,6 +27,8 @@ func init_arr() -> void:
 	arr.direction = ["up", "right", "down", "left"]
 	arr.tower = ["harmony", "life", "death", "souls"]
 	arr.karma = ["inferno", "paradise"]
+	arr.phase = ["rolling", "searching", "selecting", "moving", "ending"]
+	arr.sin = ["greed", "envy", "pride", "wrath"]
 
 
 func init_num() -> void:
@@ -58,6 +60,12 @@ func init_num() -> void:
 	
 	num.location = {}
 	num.location.markers = 3
+	
+	num.phase = {}
+	num.phase.n = arr.phase.size() - 1
+	
+	num.turn = {}
+	num.turn.n = arr.phase.size()
 
 
 func init_dict() -> void:
@@ -197,6 +205,7 @@ func init_scene() -> void:
 	scene.pantheon = load("res://scene/1/pantheon.tscn")
 	scene.god = load("res://scene/1/god.tscn")
 	
+	scene.planet = load("res://scene/2/planet.tscn")
 	scene.isle = load("res://scene/2/isle.tscn")
 	scene.location = load("res://scene/2/location.tscn")
 	
@@ -210,6 +219,7 @@ func init_scene() -> void:
 	scene.squad = load("res://scene/5/squad.tscn")
 	scene.token = load("res://scene/5/token.tscn")
 	scene.marker = load("res://scene/5/marker.tscn")
+	scene.precept = load("res://scene/5/precept.tscn")
 	
 
 
@@ -222,6 +232,7 @@ func init_vec():
 	vec.size.frontier = Vector2(18, 18) * 1.25
 	vec.size.pawn = Vector2(vec.size.location)
 	vec.size.token = Vector2(vec.size.location / 3)
+	vec.size.mileage = Vector2(vec.size.facet.x * 2, vec.size.facet.y)
 	
 	
 	init_window_size()

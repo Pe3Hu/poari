@@ -2,19 +2,19 @@ extends MarginContainer
 
 
 @onready var cradle = $HBox/Cradle
-@onready var continent = $HBox/Continent
+@onready var universe = $HBox/Universe
 
 
 func _ready() -> void:
 	var input = {}
 	input.sketch = self
 	cradle.set_attributes(input)
-	continent.set_attributes(input)
+	universe.set_attributes(input)
 	
-	var isle = continent.isles.get_child(0)
+	var planet = universe.planets.get_child(0)
 	
 	var god = cradle.pantheons.get_child(0).gods.get_child(0)
 	var squad = god.prepare_squad()
-	isle.add_squad(squad)
+	planet.add_squad(squad)
 	
-	isle.start_race()
+	planet.start_race()

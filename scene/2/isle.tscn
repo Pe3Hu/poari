@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cesqk6ekpivko"]
+[gd_scene load_steps=3 format=3 uid="uid://cesqk6ekpivko"]
 
 [ext_resource type="Script" path="res://scene/2/isle.gd" id="1_mop8t"]
-[ext_resource type="PackedScene" uid="uid://cetpku1674nsq" path="res://scene/4/mileage.tscn" id="3_ap74d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7paps"]
 
@@ -27,53 +26,24 @@ visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7paps")
 
-[node name="VBox" type="VBoxContainer" parent="."]
+[node name="HBox" type="HBoxContainer" parent="."]
 layout_mode = 2
-
-[node name="HBox" type="HBoxContainer" parent="VBox"]
-layout_mode = 2
+theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Squads" type="VBoxContainer" parent="VBox/HBox"]
-layout_mode = 2
-alignment = 1
-
-[node name="Locations" type="GridContainer" parent="VBox/HBox"]
+[node name="Locations" type="GridContainer" parent="HBox"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 
-[node name="Aisles" type="VBoxContainer" parent="VBox/HBox"]
+[node name="Aisles" type="VBoxContainer" parent="HBox"]
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Undersides" type="VBoxContainer" parent="VBox/HBox"]
+[node name="Regions" type="VBoxContainer" parent="HBox"]
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
-
-[node name="Travelers" type="VBoxContainer" parent="VBox/HBox"]
-layout_mode = 2
-theme_override_constants/separation = 0
-alignment = 1
-
-[node name="Regions" type="VBoxContainer" parent="VBox/HBox"]
-layout_mode = 2
-theme_override_constants/separation = 0
-alignment = 1
-
-[node name="Towers" type="VBoxContainer" parent="VBox/HBox"]
-layout_mode = 2
-theme_override_constants/separation = 0
-alignment = 1
-
-[node name="Mileage" parent="VBox" instance=ExtResource("3_ap74d")]
-layout_mode = 2
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.15
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
